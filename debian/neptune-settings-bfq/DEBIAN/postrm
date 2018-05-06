@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+if [ "$1" = "remove" ] || [ "$1" = "deconfigure" ]; then
+   sed -i 's/scsi_mod.use_blk_mq=1//g' /etc/default/grub
+   if which update-grub2 > /dev/null ; then
+        update-grub2 || true
+   fi
+   udevadm control --reload
+   udevadm trigger
+   echo "Please restart for changes to take effect."
+fi 

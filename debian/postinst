@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+if [ "$1" = "configure" ]; then
+   sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& scsi_mod.use_blk_mq=1/' /etc/default/grub
+   if which update-grub2 > /dev/null ; then
+        update-grub2 || true
+   fi
+   udevadm control --reload
+   udevadm trigger
+   echo "Please restart for changes to take effect."
+fi 

@@ -1,0 +1,9 @@
+Package: neptune-settings-bfq
+Version: 1.0
+Architecture: all
+Maintainer: Leszek Lesner <leszek@zevenos.com>
+Installed-Size: 15
+Section: admin
+Priority: optional
+Description: Settings package for bfq i/o scheduler
+  This package sets the bfq i/o scheduler as default.
